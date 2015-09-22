@@ -193,7 +193,8 @@ class plgContentBallotdisplay extends JPlugin
 
             $temp = explode('=', trim(trim($regs[0][0], '[]'), '[]'));
             if (sizeof($temp) === 2) {
-                $field = explode(':', $temp[0])[1];
+                $temp2 = explode(':', $temp[0]);
+                $field = $temp2[1];
                 $value = $temp[1];
             }
 
