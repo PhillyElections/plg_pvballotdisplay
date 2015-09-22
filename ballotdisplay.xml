@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="content" method="upgrade">
+    <name>Content - Ballot Display</name>
+    <author>Matt Murphy</author> 
+    <creationDate>2015.09.20</creationDate>
+    <copyright>Copyright (C) 2015 Philadelphia Elections Commission. All rights reserved.</copyright>
+    <license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license> 
+    <authorEmail>matthew.e.murphy@phila.gov</authorEmail> 
+    <authorUrl>http://www.philadelphiavotes.com</authorUrl> 
+    <version>0.1</version>
+    <description>Takes the election name or id and returns a block of download links to that election's sample ballots. Usage: {{Ballotdisplay:id=#}} or {{Ballotdisplay:name=%}} </description>
+    <files>
+        <filename plugin="ballotdisplay">ballotdisplay.php</filename>
+    </files>
+</install>
