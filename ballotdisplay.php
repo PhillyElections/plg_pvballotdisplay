@@ -231,7 +231,8 @@ class plgContentBallotdisplay extends JPlugin
         foreach ($results as $result) {
             $sid = $result->sid;
             if (JString::strpos($result->sid, '%') !== false && JString::strpos($result->sid, '^') !== false) {
-                $sid = JString::trim(JString::str_ireplace('^', ' ', explode('%', $result->sid)[1]));
+                $temp = explode('%', $result->sid);
+                $sid = JString::trim(JString::str_ireplace('^', ' ', $temp[1]));
             }
             $return .= '<li><a href="/ballot_paper/' . $result->file_id . '.pdf" target="_blank">District ' . $sid . '</a></li>';
         }
