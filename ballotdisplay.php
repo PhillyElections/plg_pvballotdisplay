@@ -59,9 +59,9 @@ class plgContentBallotdisplay extends JPlugin {
 	 *
 	 * Method is called by the view and the results are imploded and displayed in a placeholder
 	 *
-	 * @param   object      The article object.  Note $article->text is also available
-	 * @param   object      The article params
-	 * @param   int         The 'page' number
+	 * @param   object   $article   The article object.  Note $article->text is also available
+	 * @param   object   $params   The article params
+	 * @param   int      $limitstart   The 'page' number
 	 * @return  string
 	 */
 	function onAfterDisplayTitle(&$article, &$params, $limitstart) {
@@ -75,9 +75,9 @@ class plgContentBallotdisplay extends JPlugin {
 	 *
 	 * Method is called by the view and the results are imploded and displayed in a placeholder
 	 *
-	 * @param   object      The article object.  Note $article->text is also available
-	 * @param   object      The article params
-	 * @param   int         The 'page' number
+	 * @param   object   $article   The article object.  Note $article->text is also available
+	 * @param   object   $params   The article params
+	 * @param   int      $limitstart   The 'page' number
 	 * @return  string
 	 */
 	function onBeforeDisplayContent(&$article, &$params, $limitstart) {
@@ -91,9 +91,9 @@ class plgContentBallotdisplay extends JPlugin {
 	 *
 	 * Method is called by the view and the results are imploded and displayed in a placeholder
 	 *
-	 * @param   object      The article object.  Note $article->text is also available
-	 * @param   object      The article params
-	 * @param   int         The 'page' number
+	 * @param   object   $article   The article object.  Note $article->text is also available
+	 * @param   object   $params   The article params
+	 * @param   int      $limitstart   The 'page' number
 	 * @return  string
 	 */
 	function onAfterDisplayContent(&$article, &$params, $limitstart) {
@@ -110,8 +110,8 @@ class plgContentBallotdisplay extends JPlugin {
 	 * NOTE:  Returning false will abort the save with an error.
 	 *  You can set the error by calling $article->setError($message)
 	 *
-	 * @param   object      A JTableContent object
-	 * @param   bool        If the content is just about to be created
+	 * @param   object   $article   A JTableContent object
+	 * @param   bool     $isNew   If the content is just about to be created
 	 * @return  bool        If false, abort the save
 	 */
 	function onBeforeContentSave(&$article, $isNew) {
@@ -126,8 +126,8 @@ class plgContentBallotdisplay extends JPlugin {
 	 * Method is called right after the content is saved
 	 *
 	 *
-	 * @param   object      A JTableContent object
-	 * @param   bool        If the content is just about to be created
+	 * @param   object   $article   A JTableContent object
+	 * @param   bool     $isNew   If the content is just about to be created
 	 * @return  void
 	 */
 	function onAfterContentSave(&$article, $isNew) {
@@ -141,7 +141,7 @@ class plgContentBallotdisplay extends JPlugin {
 	 * skip <script> blocks, and
 	 * call getBallotdisplayStrings() as appropriate.
 	 *
-	 * @param   string    content
+	 * @param   string   $text  content
 	 * @return  bool
 	 */
 	function prepBallotDisplay(&$text) {
@@ -173,7 +173,7 @@ class plgContentBallotdisplay extends JPlugin {
 	 * Find Ballotdisplay blocks,
 	 * get display per block.
 	 *
-	 * @param   string    content
+	 * @param   string   $text  content
 	 * @return  bool
 	 */
 	function getBallotdisplayStrings(&$text) {
@@ -204,8 +204,8 @@ class plgContentBallotdisplay extends JPlugin {
 	 * Get ballot data,
 	 * return ballot display.
 	 *
-	 * @param   string    db column
-	 * @param   string    db value
+	 * @param   string   $field  db column
+	 * @param   string   $value  db value
 	 * @return  method
 	 */
 	function getBallots($field, $value) {
@@ -241,7 +241,7 @@ class plgContentBallotdisplay extends JPlugin {
 	 * Get ballot data,
 	 * return ballot display.
 	 *
-	 * @param   objectList  ballot data
+	 * @param   objectList   $results  ballot data
 	 * @return  string
 	 */
 	function getContent(&$results) {
