@@ -1,4 +1,4 @@
-<?php
+	<?php
 /**
  * @version     $Id: ballotdisplay.php
  * @package     PVotes
@@ -10,6 +10,10 @@
 
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
+
+// Let's make sure the translations are loaded
+$language = JFactory::getLanguage();
+$language->load('plg_ballotdisplay', JPATH_ADMINISTRATOR, null, null);
 
 jimport('joomla.plugin.plugin');
 
@@ -185,7 +189,6 @@ class plgContentBallotdisplay extends JPlugin {
 		$search = "(\[\[Ballotdisplay:.*\]\])";
 
 		while (preg_match($search, $text, $regs, PREG_OFFSET_CAPTURE)) {
-
 			$temp = explode('=', trim(trim($regs[0][0], '[]'), '[]'));
 			if (sizeof($temp) === 2) {
 				$temp2 = explode(':', $temp[0]);
@@ -228,10 +231,10 @@ class plgContentBallotdisplay extends JPlugin {
 		try {
 			$results = $db->loadObjectList();
 		} catch (Exception $e) {
-			return "Oops.  Something has gone wrong while looking for <b>$field</b> : <b>$value</b>.";
+			return JText::_('Something has gone wrong while looking for').' <b>$field</b> : <b>'.$value.'</b>.';
 		}
 		if (!sizeof($results)) {
-			return "There are no Sample Ballots available for <b>$field</b> : <b>$value</b>.";
+			return JText::_('There are no Sample Ballots available for').' <b>$field</b> : <b>'.$value.'</b>.';
 			;
 		}
 		return $this->getContent($results);
@@ -252,8 +255,8 @@ class plgContentBallotdisplay extends JPlugin {
 				$temp = explode('%', $result->sid);
 				$sid  = JString::trim(JString::str_ireplace('^', ' ', $temp[1]));
 			}
-			$return .= '<li><a href="/ballot_paper/'.$result->file_id.'.pdf" target="_blank">District '.$sid.'</a></li>';
+			$return .= '<li><a href="/ballot_paper/'.$result->file_id.'.pdf" target="_blank">'.JText::_('District').' '.$sid.'</a></li>';
 		}
-		return "<h4>Download Sample Ballots</h4><ul>".$return."</ul>";
+		return '<h4>'.JText::_('Download Sample Ballots').'</h4><ul>'.$return.'</ul>';
 	}
 }
