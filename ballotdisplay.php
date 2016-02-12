@@ -235,7 +235,6 @@ class plgContentBallotdisplay extends JPlugin {
 		}
 		if (!sizeof($results)) {
 			return JText::_('There are no Sample Ballots available for').' <b>$field</b> : <b>'.$value.'</b>.';
-			;
 		}
 		return $this->getContent($results);
 	}
