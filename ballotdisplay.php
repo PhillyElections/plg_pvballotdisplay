@@ -265,8 +265,6 @@ class plgContentBallotdisplay extends JPlugin
             $content .= '<li><a href="/ballot_paper/' . $result->file_id . '.pdf" target="_blank">' . JText::_('District') . ' ' . $sid . '</a></li>';
         }
         $content .= '</ul>';
-        $content .= '<p>' . JText::_('SOMETHING HAS GONE WRONG WHILE LOOKING FOR') . '</p>';
-        $content .= '<p>' . JText::_('THERE ARE NO SAMPLE BALLOTS AVAILABLE FOR') . '</p>';
         return $content;
     }
 }
