@@ -12,4 +12,8 @@
     <files>
         <filename plugin="ballotdisplay">ballotdisplay.php</filename>
     </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.plg_ballotdisplay.ini</language>
+        <language tag="es-ES">language/es-ES/es-ES.plg_ballotdisplay.ini</language>
+    </languages>
 </install>
