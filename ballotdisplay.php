@@ -223,11 +223,11 @@ class plgContentBallotdisplay extends JPlugin
 
         switch ($field) {
             case 'name':
-                $query = 'SELECT `b`.* from `#__rt_ballot_upload` `b`, `#__rt_election` `e` WHERE `b`.`eid`=`e`.`id` and `b`.`name`=' . $db->quote($value) . ' order by `b`.`name`';
+                $query = 'SELECT `b`.* from `#__rt_ballot_upload` `b`, `#__rt_election` `e` WHERE `b`.`eid`=`e`.`id` and `e`.`name`=' . $db->quote($value) . ' order by `b`.`file_name`';
                 break;
 
             case 'id':
-                $query = 'SELECT * FROM `#__rt_ballot_upload` WHERE `eid`=' . (int) $value . ' order by name';
+                $query = 'SELECT * FROM `#__rt_ballot_upload` WHERE `eid`=' . (int) $value . ' order by `file_name`';
                 break;
             default:
                 return false;
