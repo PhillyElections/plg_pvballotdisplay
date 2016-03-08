@@ -1,6 +1,6 @@
 	<?php
 /**
- * @version     $Id: ballotdisplay.php
+ * @version     $Id: pvballotdisplay.php
  * @package     PVotes
  * @subpackage  Content
  * @copyright   Copyright (C) 2015 Philadelphia Elections Commission
@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 
 // Let's make sure the translations are loaded
 $language = JFactory::getLanguage();
-$language->load('plg_ballotdisplay', JPATH_ADMINISTRATOR, null, null);
+$language->load('plg_pvballotdisplay', JPATH_ADMINISTRATOR, null, null);
 
 jimport('joomla.plugin.plugin');
 
@@ -24,7 +24,7 @@ jimport('joomla.plugin.plugin');
  * @subpackage  Content
  * @since       1.5
  */
-class plgContentBallotdisplay extends JPlugin
+class plgContentPvballotdisplay extends JPlugin
 {
 
     /**
@@ -52,9 +52,9 @@ class plgContentBallotdisplay extends JPlugin
     {
         global $mainframe;
         if (is_object($article)) {
-            return $this->prepBallotDisplay($article->text);
+            return $this->prepPvballotDisplay($article->text);
         }
-        return $this->prepBallotDisplay($article);
+        return $this->prepPvballotDisplay($article);
     }
 
     /**
@@ -145,29 +145,29 @@ class plgContentBallotdisplay extends JPlugin
     }
 
     /**
-     * Check for a Ballotdisplay block,
+     * Check for a PVBallotdisplay block,
      * skip <script> blocks, and
-     * call getBallotdisplayStrings() as appropriate.
+     * call getPVballotdisplayStrings() as appropriate.
      *
      * @param   string   $text  content
      * @return  bool
      */
-    public function prepBallotDisplay(&$text)
+    public function prepPvballotDisplay(&$text)
     {
         // Quick, cheap chance to back out.
-        if (JString::strpos($text, 'Ballotdisplay') === false) {
+        if (JString::strpos($text, 'PVBallotDisplay') === false) {
             return true;
         }
 
         $text = explode('<script', $text);
         foreach ($text as $i => $str) {
             if ($i == 0) {
-                $this->getBallotdisplayStrings($text[$i]);
+                $this->getPVballotDisplayStrings($text[$i]);
             } else {
                 $str_split = explode('</script>', $str);
                 foreach ($str_split as $j => $str_split_part) {
                     if (($j % 2) == 1) {
-                        $this->getBallotdisplayStrings($str_split[$i]);
+                        $this->getPvballotDisplayStrings($str_split[$i]);
                     }
                 }
                 $text[$i] = implode('</script>', $str_split);
@@ -179,20 +179,20 @@ class plgContentBallotdisplay extends JPlugin
     }
 
     /**
-     * Find Ballotdisplay blocks,
+     * Find PVballotDisplay blocks,
      * get display per block.
      *
      * @param   string   $text  content
      * @return  bool
      */
-    public function getBallotdisplayStrings(&$text)
+    public function getPvballotDisplayStrings(&$text)
     {
         // Quick, cheap chance to back out.
-        if (JString::strpos($text, 'Ballotdisplay') === false) {
+        if (JString::strpos($text, 'PVBallotDisplay') === false) {
             return true;
         }
 
-        $search = "(\[\[Ballotdisplay:.*\]\])";
+        $search = "(\[\[PVBallotDisplay:.*\]\])";
 
         while (preg_match($search, $text, $regs, PREG_OFFSET_CAPTURE)) {
             $temp = explode('=', trim(trim($regs[0][0], '[]'), '[]'));
