@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <install version="1.5" type="plugin" group="content" method="upgrade">
-    <name>Content - Ballot Display</name>
+    <name>Content - PV Ballot Display</name>
     <author>Matt Murphy</author> 
     <creationDate>2015.09.20</creationDate>
     <copyright>Copyright (C) 2015 Philadelphia Elections Commission. All rights reserved.</copyright>
@@ -8,12 +8,12 @@
     <authorEmail>matthew.e.murphy@phila.gov</authorEmail> 
     <authorUrl>http://www.philadelphiavotes.com</authorUrl> 
     <version>0.1</version>
-<description>Takes the election name or id and returns a block of download links to that election's sample ballots. Usage: [[Ballotdisplay:id=#]] or [[Ballotdisplay:name=%]].</description>
+<description>Takes the election name or id and returns a block of download links to that election's sample ballots. Usage (note capitals): [[PVBallotDisplay:id=#]] or [[PVBallotDisplay:name=%]].</description>
     <files>
-        <filename plugin="ballotdisplay">ballotdisplay.php</filename>
+        <filename plugin="pvballotdisplay">pvballotdisplay.php</filename>
     </files>
     <languages>
-        <language tag="en-GB">language/en-GB/en-GB.plg_ballotdisplay.ini</language>
-        <language tag="es-ES">language/es-ES/es-ES.plg_ballotdisplay.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_pvballotdisplay.ini</language>
+        <language tag="es-ES">language/es-ES/es-ES.plg_pvballotdisplay.ini</language>
     </languages>
 </install>
